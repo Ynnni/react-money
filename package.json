@@ -1,0 +1,28 @@
+{
+  "name": "react-money",
+  "version": "1.0.0",
+  "description": "Money Accounting frontend app",
+  "main": "server.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ynnni/react-money.git"
+  },
+  "author": "Andrew Ostroumov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ynnni/react-money/issues"
+  },
+  "homepage": "https://github.com/Ynnni/react-money#readme",
+  "dependencies": {
+    "babel-loader": "^5.3.2",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "jade": "^1.11.0",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-select": "^0.8.2",
+    "webpack-stream": "^2.1.1"
+  }
+}
