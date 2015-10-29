@@ -12,33 +12,34 @@ export default class Account extends React.Component {
   }
 
   update (e) {
-    e.preventDefault()
-    data = {
-      name: React.findDOMNode(this.refs.name).value
-    }
-    $.ajax({
-      method: "PATCH",
-      url: `/accounts/${ this.props.account.id }`,
-      dataType: 'json',
-      data: {
-        account: data
-      },
-      success: (data) => {
-        this.setState({ edit: false })
-        this.props.update(this.props.account, data)
-      }
-    })
+    // e.preventDefault()
+    // data = {
+    //   name: React.findDOMNode(this.refs.name).value
+    // }
+    // $.ajax({
+    //   method: "PATCH",
+    //   url: `/accounts/${ this.props.account.id }`,
+    //   dataType: 'json',
+    //   data: {
+    //     account: data
+    //   },
+    //   success: (data) => {
+    //     this.setState({ edit: false })
+    //     this.props.update(this.props.account, data)
+    //   }
+    // })
   }
 
   delete (e) {
     e.preventDefault()
-    $.ajax({
-      method: 'DELETE',
-      url: `/accounts/${ this.props.account.id }`,
-      dataType: 'json',
-      success: () => {
+    fetch(`//localhost:3000/api/accounts/${ this.props.account.id }`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'DELETE'
+    })
+    .then(() => {
         this.props.delete(this.props.account)
-      }
     })
   }
 

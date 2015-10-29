@@ -12,14 +12,20 @@ export default class AccountForm extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    $.post('/accounts',
-      { account: this.state },
-      (account) => {
+    fetch('//localhost:3000/api/accounts', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        account: this.state
+      })
+    })
+    .then(response => response.json())
+    .then(account => {
         this.props.add(account)
         this.clearState()
-      },
-      'json'
-    )
+    })
   }
 
   clearState () {

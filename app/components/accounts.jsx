@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactUpdate from 'react-addons-update'
 import Account from './account.jsx'
 import AccountForm from './account-form.jsx'
 
@@ -10,29 +11,25 @@ export default class Accounts extends React.Component {
   }
 
   fetch () {
-    fetch("/accounts.json", {
-      headers: {
-        Accept: 'application/json'
-      }
-    })
+    fetch("//localhost:3000/api/accounts")
     .then(response => response.json())
-    .then(expenses => this.setState({  accounts: accounts }))
+    .then(accounts => this.setState({  accounts: accounts }))
   }
 
   add (account) {
-    accounts = React.addons.update(this.state.accounts, { $push: [account] })
+    var accounts = ReactUpdate(this.state.accounts, { $push: [account] })
     this.setState({ accounts: accounts })
   }
 
   update (account, data) {
-    index = this.state.accounts.indexOf(account)
-    accounts = React.addons.update(this.state.accounts, { $splice: [[index, 1, data]] })
+    var index = this.state.accounts.indexOf(account)
+    var accounts = ReactUpdate(this.state.accounts, { $splice: [[index, 1, data]] })
     this.setState({ accounts: accounts })
   }
 
   delete (account) {
-    index = this.state.accounts.indexOf(account)
-    accounts = React.addons.update(this.state.accounts, { $splice: [[index, 1]] })
+    var index = this.state.accounts.indexOf(account)
+    var accounts = ReactUpdate(this.state.accounts, { $splice: [[index, 1]] })
     this.setState({ accounts: accounts })
   }
 

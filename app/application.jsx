@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Button from 'react-bootstrap/lib/Button'
-// import Accounts from './components/accounts.jsx'
+import Accounts from './components/accounts.jsx'
 
 ReactDOM.render(
-  <Button bsStyle="success"  bsSize="large" children="Money"/>,
+  <Accounts/>,
   document.getElementById('main')
 );

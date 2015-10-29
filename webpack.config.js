@@ -1,10 +1,12 @@
 var path = require('path');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   watch: true,
   entry: [
-    path.join(__dirname, "app/assets/javascripts/application.jsx"),
-    path.join("bootstrap-sass!", path.join(__dirname, "bootstrap-sass.config.js"))
+    path.join(__dirname, "app/application.jsx"),
+    path.join("bootstrap-sass!", path.join(__dirname, "bootstrap-sass.config.js")),
+
   ],
   output: {
     path: path.join(__dirname, "public/assets"),
@@ -42,8 +44,13 @@ module.exports = {
       },
       {
         test: /\.sass$/,
-        loader: "style!css!sass"
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
       }
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin("application.css", {
+      allChunks: true
+    })
+  ]
 };

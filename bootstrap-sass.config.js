@@ -1,5 +1,7 @@
 // Example file. Copy this to your project. Change then names of the referenced files or comment
 // them out. Convention is to name sass partials to start with an '_'
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 module.exports = {
   verbose: true, // Set to true to show diagnostic information
 
@@ -17,14 +19,14 @@ module.exports = {
   // customization value based on another value.
   // bootstrapCustomizations: './_bootstrap-customizations.scss',
 
-  // mainSass: './app/assets/stylesheets/application.sass',
+  mainSass: './app/application.sass',
 
   // Default for the style loading
-  styleLoader: 'style-loader!css-loader!sass-loader',
+  // styleLoader: 'style-loader!css-loader!sass-loader',
   //
   // If you want to use the ExtractTextPlugin
   //   and you want compressed
-  //     styleLoader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
+  styleLoader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
   //
   // If you want expanded CSS
   //   styleLoader: ExtractTextPlugin.extract('style-loader',
