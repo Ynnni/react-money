@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 
 export default class Account extends React.Component {
   constructor () {
@@ -12,22 +13,23 @@ export default class Account extends React.Component {
   }
 
   update (e) {
-    // e.preventDefault()
-    // data = {
-    //   name: React.findDOMNode(this.refs.name).value
-    // }
-    // $.ajax({
-    //   method: "PATCH",
-    //   url: `/accounts/${ this.props.account.id }`,
-    //   dataType: 'json',
-    //   data: {
-    //     account: data
-    //   },
-    //   success: (data) => {
-    //     this.setState({ edit: false })
-    //     this.props.update(this.props.account, data)
-    //   }
-    // })
+    e.preventDefault()
+    fetch(`//localhost:3000/api/accounts/${ this.props.account.id }`,{
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method:'PATCH',
+      body: JSON.stringify({
+        account: {
+          name: ReactDOM.findDOMNode(this.refs.name).value
+        }
+      })
+    })
+    .then(response => response.json())
+    .then((json) => {
+      this.setState({ edit: false })
+      this.props.update(this.props.account, json)
+    })
   }
 
   delete (e) {
