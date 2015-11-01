@@ -10,7 +10,7 @@ app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
-  res.render('application', { title: 'Money' });
+  res.render('index', { title: 'Money' });
 });
 
 var server = app.listen(config.server.port, function () {

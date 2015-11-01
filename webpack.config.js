@@ -5,14 +5,18 @@ var config = require("./config");
 
 module.exports = {
   watch: true,
-  entry: [
-    path.join(__dirname, "app/application.jsx"),
-    path.join("bootstrap-sass!", path.join(__dirname, "bootstrap-sass.config.js")),
-
-  ],
+  entry: {
+    app: [
+      `webpack-dev-server/client?http://localhost:${ config.assets.port }`,
+      "webpack/hot/dev-server",
+      path.join(__dirname, "app/application.jsx"),
+      path.join("bootstrap-sass!", path.join(__dirname, "bootstrap-sass.config.js"))
+    ]
+  },
   output: {
     path: path.join(__dirname, "public/assets"),
-    filename: "application.js"
+    filename: "application.js",
+    publicPath: `http://localhost:${config.assets.port}/assets`
   },
   module: {
     loaders: [
@@ -51,6 +55,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin("application.css", {
       allChunks: true
     }),
