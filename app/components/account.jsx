@@ -14,7 +14,7 @@ export default class Account extends React.Component {
 
   update (e) {
     e.preventDefault()
-    fetch(`//localhost:3000/api/accounts/${ this.props.account.id }`,{
+    fetch(`${API_URI}/accounts/${ this.props.account.id }`,{
       headers: {
         'Content-Type': 'application/json'
       },
@@ -34,7 +34,7 @@ export default class Account extends React.Component {
 
   delete (e) {
     e.preventDefault()
-    fetch(`//localhost:3000/api/accounts/${ this.props.account.id }`, {
+    fetch(`${API_URI}/accounts/${ this.props.account.id }`, {
       headers: {
         'Content-Type': 'application/json'
       },

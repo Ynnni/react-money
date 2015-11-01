@@ -11,7 +11,7 @@ export default class Accounts extends React.Component {
   }
 
   fetch () {
-    fetch("//localhost:3000/api/accounts")
+    fetch(`${API_URI}/accounts`)
     .then(response => response.json())
     .then(accounts => this.setState({  accounts: accounts }))
   }

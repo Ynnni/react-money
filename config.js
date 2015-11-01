@@ -1,15 +1,9 @@
 var config = function() {
   switch(process.env.NODE_ENV || 'development'){
       case 'development':
-          return {
-            port: 5000
-          };
-
+          return require('./config/development.js');
       case 'production':
-          return {
-            port: 80
-          };
-
+          return require('./config/production.js');
       default:
           return {};
   }

@@ -12,7 +12,7 @@ export default class AccountForm extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    fetch('//localhost:3000/api/accounts', {
+    fetch(`${API_URI}/accounts`, {
       headers: {
         'Content-Type': 'application/json'
       },

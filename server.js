@@ -1,5 +1,5 @@
 var express = require('express');
-var config = require('./config.js');
+var config = require('./config');
 var path = require('path');
 
 var app = express();
@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
   res.render('application', { title: 'Money' });
 });
 
-var server = app.listen(config.port, function () {
+var server = app.listen(config.server.port, function () {
   var host = server.address().address;
   var port = server.address().port;
   console.log('App listening at http://%s:%s', host, port);

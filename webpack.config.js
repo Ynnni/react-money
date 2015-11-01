@@ -1,5 +1,7 @@
-var path = require('path');
+var webpack = require("webpack");
+var path = require("path");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var config = require("./config");
 
 module.exports = {
   watch: true,
@@ -16,7 +18,7 @@ module.exports = {
     loaders: [
       {
         test: /bootstrap-sass\/assets\/javascripts\//,
-        loader: 'imports?jQuery=jquery'
+        loader: "imports?jQuery=jquery"
       },
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
@@ -44,13 +46,14 @@ module.exports = {
       },
       {
         test: /\.sass$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
       }
     ]
   },
   plugins: [
     new ExtractTextPlugin("application.css", {
       allChunks: true
-    })
+    }),
+    new webpack.DefinePlugin(config.client)
   ]
 };
