@@ -5,7 +5,7 @@ var config = function() {
       case 'production':
           return require('./config/production.js');
       default:
-          return {};
+          return {}; // need to throw exception
   }
 }
 
