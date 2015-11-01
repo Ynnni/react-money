@@ -1,6 +1,6 @@
 module.exports = {
   client: {
-    API_URI: JSON.stringify("/api")
+    __API__: JSON.stringify("/api")
   },
   server: {
     port: 80
