@@ -1,4 +1,7 @@
-class Expenses extends React.Component {
+import React from 'react'
+import Expense from './expense.jsx'
+
+export default class Expenses extends React.Component {
   constructor () {
     super()
     this.state = { expenses: [] }
@@ -6,13 +9,9 @@ class Expenses extends React.Component {
   }
 
   fetch () {
-    fetch("/expenses", {
-      headers: {
-        Accept: 'application/json'
-      }
-    })
-      .then(response => response.json())
-      .then(expenses => this.setState({ expenses: expenses }))
+    fetch(`${__API__}/expenses`)
+    .then(response => response.json())
+    .then(expenses => this.setState({ expenses: expenses }))
   }
 
   render () {
@@ -23,6 +22,7 @@ class Expenses extends React.Component {
     return (
       <div className="Expenses">
         <h2 className="title">Expenses</h2>
+        <a href="#/expenses/new" className="btn btn-primary">Create Expense</a>
         <hr/>
         <table className="table table-bordered">
           <thead>
